@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>INVITACIÓN A NUESTRA BODA</title>
+
+  <!-- Fuente Parisienne -->
+  <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+
+      /* Fondo ajustado */
+      background: url("https://i.imgur.com/tsYJFD3.jpeg") no-repeat center center;
+      background-size: cover;  /* Escala para cubrir toda la pantalla */
+      min-height: 100vh;       /* Asegura que cubra toda la altura de la ventana */
+      margin: 0;
+
+      /* Centrado del contenido */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Caja de acceso elegante */
+    .login-box {
+      background: rgba(255, 255, 255, 0.85); /* semi-transparente para texto legible */
+      padding: 40px 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+
+    /* Título con fuente Parisienne */
+    h1 {
+      font-family: 'Parisienne', cursive;
+      font-size: 48px;
+      color: #2c2c2c; /* color elegante, puedes cambiarlo */
+      margin-bottom: 20px;
+    }
+
+    input[type="password"] {
+      width: 80%;
+      padding: 12px;
+      font-size: 16px;
+      margin-top: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 12px 25px;
+      font-size: 16px;
+      background-color: #2c2c2c;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #c8b273;
+    }
+
+    #error {
+      color: red;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-box">
+    <h1>Alexandra y Juan Jesús</h1>
+    <p>Por favor, introduce tu clave de acceso /<br>please enter your access key</p>
+
+    <input type="password" id="clave" placeholder="Clave">
+    <br>
+    <button onclick="entrar()">Entrar</button>
+
+    <p id="error"></p>
+  </div>
+
+  <script>
+    function entrar() {
+      const clave = document.getElementById("clave").value;
+      const clavesValidas = ["familia", "amigos", "boda2027"];
+
+      if (clavesValidas.includes(clave)) {
+        localStorage.setItem("clave", clave);
+        window.location.href = "invitacion.html";
+      } else {
+        document.getElementById("error").innerText = "Clave incorrecta";
+      }
+    }
+  </script>
+
+</body>
+</html>
