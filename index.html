@@ -71,35 +71,34 @@
     <h1>Alexandra y Juan Jesús</h1>
     <p>Por favor, introduce tu clave de acceso /<br>please enter your access key</p>
 
-    <input type="password" id="clave" placeholder="Clave">
-    <br>
-    <button id="btnEntrar">Entrar</button>
-
-    <p id="error"></p>
+    <!-- FORMULARIO -->
+    <form id="formClave">
+      <input type="password" id="clave" placeholder="Clave">
+      <br>
+      <button type="submit">Entrar</button>
+      <p id="error"></p>
+    </form>
   </div>
 
   <script>
-    // Espera a que el DOM cargue
-    document.addEventListener("DOMContentLoaded", function() {
-      const inputClave = document.getElementById("clave");
-      const btnEntrar = document.getElementById("btnEntrar");
-      const errorMsg = document.getElementById("error");
+    const form = document.getElementById("formClave");
+    const inputClave = document.getElementById("clave");
+    const errorMsg = document.getElementById("error");
 
-      function entrar() {
-        const clave = inputClave.value;
-        const clavesValidas = ["familia", "amigos", "boda2027"];
+    form.addEventListener("submit", function(event) {
+      event.preventDefault(); // Evita que el formulario recargue la página
 
-        if (clavesValidas.includes(clave)) {
-          localStorage.setItem("clave", clave);
-          window.location.href = "invitacion.html";
-        } else {
-          errorMsg.innerText = "Clave incorrecta";
-        }
+      const clave = inputClave.value;
+      const clavesValidas = ["familia", "amigos", "boda2027"];
+
+      if (clavesValidas.includes(clave)) {
+        localStorage.setItem("clave", clave);
+        window.location.href = "invitacion.html";
+      } else {
+        errorMsg.innerText = "Clave incorrecta";
       }
+    });
+  </script>
 
-      // Botón clic
-      btnEntrar.addEventListener("click", entrar);
-
-      // Presionar Enter en el input
-      inputClave.addEventListener("keydown", function(event) {
-        if (event.key === "Enter")
+</body>
+</html>
