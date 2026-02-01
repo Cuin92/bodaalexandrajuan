@@ -14,8 +14,8 @@
 
       /* Fondo ajustado */
       background: url("https://i.imgur.com/tsYJFD3.jpeg") no-repeat center center;
-      background-size: cover;  /* Escala para cubrir toda la pantalla */
-      min-height: 100vh;       /* Asegura que cubra toda la altura de la ventana */
+      background-size: cover;
+      min-height: 100vh;
       margin: 0;
 
       /* Centrado del contenido */
@@ -26,7 +26,7 @@
 
     /* Caja de acceso elegante */
     .login-box {
-      background: rgba(255, 255, 255, 0.85); /* semi-transparente para texto legible */
+      background: rgba(255, 255, 255, 0.85);
       padding: 40px 30px;
       border-radius: 15px;
       box-shadow: 0 4px 15px rgba(0,0,0,0.2);
@@ -37,7 +37,7 @@
     h1 {
       font-family: 'Parisienne', cursive;
       font-size: 48px;
-      color: #2c2c2c; /* color elegante, puedes cambiarlo */
+      color: #2c2c2c;
       margin-bottom: 20px;
     }
 
@@ -85,8 +85,17 @@
   </div>
 
   <script>
+    const inputClave = document.getElementById("clave");
+
+    // Permite pulsar Enter para enviar
+    inputClave.addEventListener("keydown", function(event) {
+      if (event.key === "Enter") {
+        entrar();
+      }
+    });
+
     function entrar() {
-      const clave = document.getElementById("clave").value;
+      const clave = inputClave.value;
       const clavesValidas = ["familia", "amigos", "boda2027"];
 
       if (clavesValidas.includes(clave)) {
