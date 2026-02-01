@@ -11,20 +11,15 @@
     body {
       font-family: Arial, sans-serif;
       text-align: center;
-
-      /* Fondo ajustado */
       background: url("https://i.imgur.com/tsYJFD3.jpeg") no-repeat center center;
       background-size: cover;
       min-height: 100vh;
       margin: 0;
-
-      /* Centrado del contenido */
       display: flex;
       justify-content: center;
       align-items: center;
     }
 
-    /* Caja de acceso elegante */
     .login-box {
       background: rgba(255, 255, 255, 0.85);
       padding: 40px 30px;
@@ -33,7 +28,6 @@
       text-align: center;
     }
 
-    /* Título con fuente Parisienne */
     h1 {
       font-family: 'Parisienne', cursive;
       font-size: 48px;
@@ -79,33 +73,33 @@
 
     <input type="password" id="clave" placeholder="Clave">
     <br>
-    <button onclick="entrar()">Entrar</button>
+    <button id="btnEntrar">Entrar</button>
 
     <p id="error"></p>
   </div>
 
   <script>
-    const inputClave = document.getElementById("clave");
+    // Espera a que el DOM cargue
+    document.addEventListener("DOMContentLoaded", function() {
+      const inputClave = document.getElementById("clave");
+      const btnEntrar = document.getElementById("btnEntrar");
+      const errorMsg = document.getElementById("error");
 
-    // Permite pulsar Enter para enviar
-    inputClave.addEventListener("keydown", function(event) {
-      if (event.key === "Enter") {
-        entrar();
+      function entrar() {
+        const clave = inputClave.value;
+        const clavesValidas = ["familia", "amigos", "boda2027"];
+
+        if (clavesValidas.includes(clave)) {
+          localStorage.setItem("clave", clave);
+          window.location.href = "invitacion.html";
+        } else {
+          errorMsg.innerText = "Clave incorrecta";
+        }
       }
-    });
 
-    function entrar() {
-      const clave = inputClave.value;
-      const clavesValidas = ["familia", "amigos", "boda2027"];
+      // Botón clic
+      btnEntrar.addEventListener("click", entrar);
 
-      if (clavesValidas.includes(clave)) {
-        localStorage.setItem("clave", clave);
-        window.location.href = "invitacion.html";
-      } else {
-        document.getElementById("error").innerText = "Clave incorrecta";
-      }
-    }
-  </script>
-
-</body>
-</html>
+      // Presionar Enter en el input
+      inputClave.addEventListener("keydown", function(event) {
+        if (event.key === "Enter")
